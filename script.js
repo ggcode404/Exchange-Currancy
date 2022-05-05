@@ -45,7 +45,7 @@ const calculate = async () => {
 } 
 
 
-
+calculate();
 
 
 const swapChange = () => {
