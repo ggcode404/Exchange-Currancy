@@ -20,6 +20,9 @@ const value2 = currancy2.value;
 
 
 const calculate = async () => {
+
+    
+    
     try  {
         const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${value1}`)
         const data = await response.json();
@@ -44,21 +47,32 @@ const calculate = async () => {
 
 } 
 
+const calcNumber = () => {
+    if(below1Dom.value >= 0){
+        calculate();
+    }else{
+        below1Dom.value = '';
+    }
+}
 
-calculate();
+
+calcNumber();
+
+
+
 
 
 const swapChange = () => {
     let change = currancy1.value;
     currancy1.value = currancy2.value;
     currancy2.value = change;
-    calculate();
+    calcNumber()
     
 }
 
 
 below1Dom.addEventListener('click', () => {
-    calculate();
+    calcNumber()
 } );
 
 
@@ -68,12 +82,12 @@ swapDom.addEventListener('click', swapChange);
 
 currancy1.addEventListener('change', e => {
     
-    calculate();
+    calcNumber()
 })
 
 currancy2.addEventListener('change', e => {
     
-    calculate();
+    calcNumber();
 })
 
 
